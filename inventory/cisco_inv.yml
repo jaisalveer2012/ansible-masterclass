@@ -1,0 +1,13 @@
+all:
+  children:
+    vios_group:
+      hosts:
+        ri:
+          ansible_become: 'true'
+          ansible_become_method: enable
+          ansible_become_password: admin123
+          ansible_connection: ansible.netcommon.network_cli
+          ansible_host: 192.168.137.140
+          ansible_network_os: cisco.ios.ios
+          ansible_password: admin123
+          ansible_user: root

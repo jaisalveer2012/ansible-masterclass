@@ -1,0 +1,8 @@
+---
+- name: Demo Playbook
+  hosts: vios_group
+  connection: ansible.netcommon.network_cli
+  vars:
+    ansible_user: root
+    ansible_password: admin123
+    

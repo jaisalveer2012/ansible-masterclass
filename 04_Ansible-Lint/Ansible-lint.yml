@@ -1,0 +1,9 @@
+---
+- name: Ansible Lint demo playbook
+  hosts: vios_group
+  vars:
+    test: "test_data"                                  # Invalid variable Name called lambda changed to test
+  tasks:
+    - name: Print this
+      ansible.builtin.debug:
+        msg: "{{ ansible_config_file }} {{ ansible_facts}}"                        # Space issue in Jinja Template

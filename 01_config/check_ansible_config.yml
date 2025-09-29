@@ -4,7 +4,8 @@
   tasks:
     - name: Print Ansible configuration
       ansible.builtin.debug:
-         msg: 
-           - "{{ ansible_config_file }}"
-           - "{{ inventory_file }}"
-           - "{{ ansible_facts }}"
+        msg: 
+          - "{{ ansible_config_file }}"
+          - "{{ inventory_file }}"
+          - "{{ ansible_facts }}"
+          - "{{ ansible_user }}"

@@ -4,7 +4,8 @@
   tasks:
     - name: configure IP domain name
       cisco.ios.ios_config:
-        lines: ip domain name "{{ ip_domain_name }}"
+        lines: 
+          - "ip domain name '{{ ip_domain_name }}'"
       register: ip_domain_config
 
     - name: Print output

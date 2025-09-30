@@ -1,6 +1,6 @@
 ---
 - hosts: vios_group
-  # gather_facts: no
+  gather_facts: no
   tasks:
     - name: Print Ansible configuration
       ansible.builtin.debug:

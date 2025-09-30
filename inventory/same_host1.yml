@@ -15,3 +15,5 @@ all:
           ansible_host: 192.168.137.140
         r7:
           ansible_host: 192.168.137.138
+        r2:
+          ansible_host: 192.168.137.137

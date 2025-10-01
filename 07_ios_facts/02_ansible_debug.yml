@@ -1,0 +1,26 @@
+---
+- name: Gather IOS facts
+  hosts: r1,r2
+  tasks:
+           
+    - name: Print IOS facts
+      ansible.builtin.debug:
+        msg: |                                                   #Literal block scalar            
+           {{ ansible_facts.net_iostype }}
+    - name: Print IOS facts
+      ansible.builtin.debug:
+        msg: >                                                  # block scalar            
+           {{ ansible_facts.net_iostype.split('\n') }}
+    
+    - name: Variable
+      ansible.builtin.debug:
+        msg:                                                              
+           "{{ test_var }}"                                     # vairable from group_vars
+
+    - name: Direct variable print
+      ansible.builtin.debug:
+        var: test_var                                     # Direct variable instead of mesg from group_vars
+
+
+
+

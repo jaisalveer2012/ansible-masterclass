@@ -1,0 +1,18 @@
+---
+- name: Gather IOS facts
+  hosts: r1
+  tasks:
+    - name: Gathar cisco facts
+      cisco.ios.ios_facts:
+        gather_subset: all
+        available_network_resources: true
+        gather_network_resources: l3_interfaces
+    - name: Print IOS facts
+      ansible.builtin.debug:
+        msg:
+          - "{{ ansible_facts }}"
+    - name: Print ios network
+      ansible.builtin.debug:
+        msg:
+          - "{{ ansible_facts.net_config.split('\n') }}"
+

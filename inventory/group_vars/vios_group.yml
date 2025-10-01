@@ -1,4 +1,5 @@
 ip_domain_name: example.test.com
+intf_num:  1
 test_var: |
           abc
           xyz

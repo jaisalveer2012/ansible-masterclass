@@ -1,0 +1,18 @@
+---
+- name: ios commands
+  hosts: vios_group
+  gather_facts: no
+  tasks: 
+    - name: send ios command
+      cisco.ios.ios_command:
+        commands:
+          - show ip interface brief
+          - show version
+        match: any                                    # match any condition in above commands i.e DHCP in show ip int brief or uptime in show version
+        wait_for:
+          - result[0] contains "DHCP"
+          - result[1] contains "uptime"
+      register: output
+    - name: print output
+      ansible.builtin.debug:
+        msg: "{{ output.stdout_lines }}"

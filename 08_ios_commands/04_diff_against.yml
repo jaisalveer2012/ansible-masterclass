@@ -1,0 +1,19 @@
+---
+- name: Configure domain name
+  hosts: vios_group
+  gather_facts: no
+  tasks:
+    
+    - name: Configure no domain lookup
+      cisco.ios.ios_config:
+        lines: ip domain lookup
+        diff_against: running                                                 #config difference against running config
+        backup: no
+        backup_options:                                           
+          dir_path: ./08_ios_commands/backup_configs/{{ inventory_hostname }}
+          filename: "backup_config_{{ inventory_hostname }}.txt"
+      register: config_backup
+    
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ config_backup }}"

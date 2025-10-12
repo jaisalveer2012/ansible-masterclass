@@ -1,0 +1,10 @@
+---
+interface_list:
+  - name: Loopback1
+    description: configured via ansible
+    ip: 7.7.7.7
+    mask: 255.255.255.255
+  - name: Ethernet0/2
+    description: P2P connectivity between R7 and R1
+    ip: 17.1.1.2
+    mask: 255.255.255.252

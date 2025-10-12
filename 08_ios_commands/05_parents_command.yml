@@ -1,0 +1,28 @@
+---
+- name: Configure intf names
+  hosts: r1
+  tasks: 
+    - name: Configure intf
+      cisco.ios.ios_config:
+        lines:
+          - description configured via ansible
+          - ip address 1.1.1.1 255.255.255.255
+        parents: interface loopback 111
+      register: intf_config
+
+    - name: Print the output
+      ansible.builtin.debug:
+        msg: "{{ intf_config }}"
+ 
+    - name: Configure P2P intf
+      cisco.ios.ios_config:
+        lines:
+          - description P2P connectivity between R1 and R7
+          - ip address 17.1.1.1 255.255.255.252
+          - no shutdown
+        parents: interface GigabitEthernet0/2
+      register: p2p_config
+
+    - name: Print the output
+      ansible.builtin.debug:
+        msg: "{{ p2p_config }}"

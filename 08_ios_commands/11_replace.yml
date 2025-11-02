@@ -1,0 +1,33 @@
+---
+- name: Configure interface name
+  hosts: r7
+  gather_facts: no
+  tasks:
+    - name: replace line
+      cisco.ios.ios_config:
+        lines:
+          - description R7-To-R2 connectivity
+          - ip address 27.0.0.5 255.255.255.0
+          - no shutdown
+        parents: interface ethernet0/3
+        replace: line
+      register: interface_config
+
+    - name: print command output
+      ansible.builtin.debug:
+        msg: "{{ interface_config }}"
+
+################################################
+
+################################################
+    - name: block 
+      cisco.ios.ios_config:
+        lines:
+          - ip address 27.0.0.10 255.255.255.0
+        parents: interface ethernet0/3
+        replace: block
+      register: int_cmd
+
+    - name: print command output
+      ansible.builtin.debug:
+        msg: "{{ int_cmd }}"
